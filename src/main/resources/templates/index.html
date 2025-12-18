@@ -11,10 +11,15 @@
         <button type="submit">The Button</button>
     </form>
 
-    <p th:text="${quote.text}"></p>
+    <div th:if="${quote != null}">
+        <p th:text="${quote.text}"></p>
 
-    <p><strong>Book</strong> <span th:text="${quote.book}"></span>
-        <strong>Chapter:Verse</strong>
-        <span th:text="${quote.chapter} + ':' + ${quote.verse}"></span></p>
+        <p>
+            <strong>Book</strong> <span th:text="${quote.book}"></span>
+            <strong>Chapter:Verse</strong>
+            <span th:text="${quote.chapter} + ':' + ${quote.verse}"></span>
+        </p>
+    </div>
+
 </body>
 </html>

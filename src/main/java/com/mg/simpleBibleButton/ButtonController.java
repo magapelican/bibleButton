@@ -4,15 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 @Controller
 public class ButtonController {
 
-    private final RestTemplate restTemplate;
+    private final RestClient restClient;
 
-    public ButtonController(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public ButtonController(RestClient restClient) {
+        this.restClient = restClient;
     }
 
     @GetMapping("/")
@@ -23,8 +23,11 @@ public class ButtonController {
     @PostMapping("/print")
     public String buttonClicked(Model model) {
         String path = "https://bible-api.com/data/kjv/random/jhn";
-        ApiResponce responce = restTemplate.getForObject(path, ApiResponce.class);
-        Quote quote = responce.getVerse();
+        ApiResponce responce = restClient.get()
+                .uri(path)
+                .retrieve()
+                .body(ApiResponce.class);
+        Quote quote = responce.getQuote();
 
         model.addAttribute("quote", quote);
         return "index";

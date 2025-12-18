@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ApiResponce {
 
     @JsonProperty("random_verse")
-    private Quote verse;
+    private Quote quote;
 
-    public Quote getVerse() {
-        return verse;
+    public Quote getQuote() {
+        return quote;
     }
 
-    public void setVerse(Quote verse) {
-        this.verse = verse;
+    public void setQuote(Quote quote) {
+        this.quote = quote;
     }
 }
