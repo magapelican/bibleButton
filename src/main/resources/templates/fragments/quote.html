@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="quoteFragment" class="quote-box">
+        <p th:text="${quote.text}"></p>
+
+        <p>
+            <strong>Book</strong> <span th:text="${quote.book}"></span>
+            <strong>Chapter:Verse</strong>
+            <span th:text="${quote.chapter} + ':' + ${quote.verse}"></span>
+        </p>
+    </div>
+</body>
+</html>

@@ -2,23 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
     <title>BibleButton</title>
 </head>
 <body>
     <h2>Click the button</h2>
 
-    <form action="/print" method="post">
-        <button type="submit">The Button</button>
-    </form>
+    <button hx-post="/print"
+            hx-target="#quote-container"
+            hx-swap="innerHTML"
+            hx-indicator="#loading"
+            hx-disabled-elt="this">
+        The Button
+    </button>
 
-    <div th:if="${quote != null}">
-        <p th:text="${quote.text}"></p>
+    <div id="quote-container">
 
-        <p>
-            <strong>Book</strong> <span th:text="${quote.book}"></span>
-            <strong>Chapter:Verse</strong>
-            <span th:text="${quote.chapter} + ':' + ${quote.verse}"></span>
-        </p>
     </div>
 
 </body>

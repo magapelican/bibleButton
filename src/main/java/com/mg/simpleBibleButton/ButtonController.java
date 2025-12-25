@@ -30,7 +30,7 @@ public class ButtonController {
         Quote quote = responce.getQuote();
 
         model.addAttribute("quote", quote);
-        return "index";
+        return "fragments/quote :: quoteFragment";
     }
 
 }
